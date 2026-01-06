@@ -1,0 +1,5 @@
+accessWidener v2 named
+
+# GUI access
+accessible field net/minecraft/client/gui/screen/Screen width I
+accessible field net/minecraft/client/gui/screen/Screen height I

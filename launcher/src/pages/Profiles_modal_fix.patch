@@ -1,0 +1,45 @@
+--- Profiles.tsx.orig
++++ Profiles.tsx
+@@ -917,9 +917,15 @@
+   };
+ 
+   return (
+-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+-      <div className="glass rounded-2xl border border-theme-muted/20/50 shadow-2xl w-[450px]">
+-        <div className="p-6 border-b border-theme-muted/20/50">
++    <div 
++      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm"
++      onPointerDown={(e) => {
++        if (e.target === e.currentTarget) onClose();
++      }}
++    >
++      <div 
++        className="glass rounded-2xl border border-theme-muted/20 shadow-2xl w-[450px] pointer-events-auto"
++      >
++        <div className="p-6 border-b border-theme-muted/20">
+           <h2 className="text-xl font-bold">Create Profile</h2>
+           <p className="text-theme-muted text-sm mt-1">
+             Create a new profile for {version}
+@@ -937,7 +943,7 @@
+               ].map((type) => (
+                 <button
+                   key={type.id}
+-                  onClick={() => setProfileType(type.id as typeof profileType)}
++                  onPointerDown={() => setProfileType(type.id as typeof profileType)}
+                   className={clsx(
+                     'p-3 rounded-lg border text-left transition-colors',
+                     profileType === type.id
+@@ -969,10 +975,10 @@
+           )}
+         </div>
+ 
+-        <div className="p-4 border-t border-theme-muted/20/50 flex justify-end gap-3">
++        <div className="p-4 border-t border-theme-muted/20 flex justify-end gap-3">
+           <button
+-            onClick={onClose}
+-            className="px-4 py-2 rounded-lg bg-surface-secondary hover:bg-miracle-500/20 transition-colors"
++            onPointerDown={onClose}
++            className="px-4 py-2 rounded-lg bg-surface-secondary hover:bg-miracle-500/20 transition-colors active:scale-95"
+           >
+             Cancel
+           </button>

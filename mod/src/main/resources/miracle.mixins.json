@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "gg.miracle.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MinecraftClientMixin",
+    "KeyboardMixin",
+    "InGameHudMixin",
+    "GameRendererMixin",
+    "TitleScreenMixin",
+    "WindowTitleMixin",
+    "EntityMixin",
+    "CameraMixin",
+    "WorldRendererMixin",
+    "ClientPlayerEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

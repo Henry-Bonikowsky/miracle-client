@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "miracle",
+  "version": "${version}",
+  "name": "Miracle Client",
+  "description": "A modern Minecraft client with performance optimizations and quality of life features.",
+  "authors": ["Miracle Team"],
+  "contact": {
+    "homepage": "https://miracle.gg",
+    "sources": "https://github.com/miracleclient/miracle"
+  },
+  "license": "All Rights Reserved",
+  "icon": "assets/miracle/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["gg.miracle.MiracleClient"],
+    "modmenu": ["gg.miracle.integration.ModMenuIntegration"]
+  },
+  "mixins": ["miracle.mixins.json"],
+  "accessWidener": "miracle.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "${minecraft_dep}",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "recommends": {
+    "sodium": "*",
+    "iris": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/miracle"
+      }
+    }
+  }
+}

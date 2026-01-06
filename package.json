@@ -1,0 +1,11 @@
+{
+  "name": "miracle-client",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter launcher tauri dev",
+    "build": "pnpm --filter launcher tauri build",
+    "build:mod": "cd mod && ./gradlew build",
+    "build:backend": "cd backend && cargo build --release"
+  }
+}

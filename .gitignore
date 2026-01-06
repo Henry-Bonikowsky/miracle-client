@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+target/
+.gradle/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Build outputs
+dist/
+out/
+*.jar
+
+# Tauri
+launcher/src-tauri/target/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime
+run/
+
+# Loom cache
+.loom-cache/
+
+# Misc
+nul
+*.hprof
+
+# Claude session
+.claude/

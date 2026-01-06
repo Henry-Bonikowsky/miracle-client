@@ -1,0 +1,16 @@
+Add these lines at line 1269 (after let dir = ...):
+
+    tracing::info!(
+        "get_installed_shaders: Looking in {:?} (version={:?}, profile={:?})",
+        dir,
+        minecraft_version,
+        profile_dir
+    );
+
+And at line 1271 (before if !dir.exists()):
+    
+    tracing::info!("Directory exists: {}", dir.exists());
+
+And at line 1299 (before packs.sort_by):
+
+    tracing::info!("Found {} shader packs in {:?}", packs.len(), dir);

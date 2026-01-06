@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: miracle-postgres
+    environment:
+      POSTGRES_USER: miracle
+      POSTGRES_PASSWORD: miracle_dev_password
+      POSTGRES_DB: miracle
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U miracle"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Redis (for sessions, caching, real-time)
+  redis:
+    image: redis:7-alpine
+    container_name: miracle-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+  # Backend API
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: miracle-backend
+    environment:
+      DATABASE_URL: postgres://miracle:miracle_dev_password@postgres:5432/miracle
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-change-in-production}
+      RUST_LOG: info
+      BIND_ADDRESS: 0.0.0.0:3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+volumes:
+  postgres_data:
+  redis_data:

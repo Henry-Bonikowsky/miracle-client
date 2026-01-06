@@ -1,0 +1,62 @@
+[package]
+name = "miracle-launcher"
+version = "1.0.0"
+description = "Miracle Client Launcher"
+authors = ["Miracle Team"]
+edition = "2021"
+
+[lib]
+name = "miracle_launcher_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.0", features = [] }
+
+[dependencies]
+# Tauri
+tauri = { version = "2.1", features = [] }
+tauri-plugin-shell = "2.0"
+tauri-plugin-fs = "2.0"
+tauri-plugin-http = "2.0"
+tauri-plugin-process = "2.0"
+tauri-plugin-dialog = "2.0"
+tauri-plugin-clipboard-manager = "2.0"
+
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# HTTP client
+reqwest = { version = "0.12", features = ["json", "stream"] }
+futures-util = "0.3"
+
+# File handling
+zip = "2"
+sha1 = "0.10"
+hex = "0.4"
+walkdir = "2"
+
+# UUID
+uuid = { version = "1", features = ["v4"] }
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Dirs
+dirs = "5"
+
+# Error handling
+thiserror = "2"
+anyhow = "1"
+
+# OAuth
+oauth2 = "4"
+urlencoding = "2"
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+rand = "0.9.2"
